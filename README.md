@@ -1,88 +1,74 @@
 # OCT IOI Detection
 
-Official implementation for the paper:
+Official code release for the paper:
 
 > **Quantitative Analysis of Vitreous Cells and Vitreoretinal Interface Irregularities in Optical Coherence Tomography for Intraocular Inflammation Detection**
 >
 > Deng Qianyi
 
-This repository will contain the CPM module and YOLO11 training code used in the study. The implementation files currently contain explicit placeholders and will be replaced with the final research code before release.
+This repository provides the principal method components and training protocol used in the study. The implementation is based on modified Ultralytics YOLO11 source code.
 
-## Repository structure
+The study uses a non-public OCT dataset. Consequently, this repository is intended as a module-level reference rather than a standalone, directly executable package. The released files must be integrated into a compatible Ultralytics codebase together with appropriately prepared data.
 
-```text
-OCT-IOI-Detection/
-|-- configs/
-|   `-- data.yaml          # Example Ultralytics dataset configuration
-|-- cpm_module.py          # Placeholder for the CPM module
-|-- train.py               # Placeholder for the YOLO11 training entry point
-|-- requirements.txt
-|-- CITATION.cff
-|-- CONTRIBUTING.md
-|-- NOTICE
-`-- LICENSE
+## Code overview
+
+| File | Description |
+| --- | --- |
+| `cpm_module.py` | CPM and PPM module definitions used by the modified network. |
+| `configs/train.yaml` | YOLO11 model configuration with CPM blocks and P2-P4 detection outputs. |
+| `loss.py` | Modified bounding-box loss excerpt using Wise-IoU. |
+| `metrics.py` | Wise-IoU calculation used by the modified loss. |
+| `binary.py` | Image binarization and boundary-curvature analysis code. |
+| `train.py` | Training procedure and experiment parameters. |
+| `test.py` | Code used with the independent test set. |
+| `configs/dataset.yaml` | Dataset configuration template for the training and validation splits. |
+
+The module files mirror modifications made within the Ultralytics source tree. They may rely on imports, registrations, and surrounding classes from the corresponding Ultralytics modules.
+
+## Dataset
+
+The OCT dataset used in this study is not publicly available and is not included in this repository.
+
+Each training configuration contains only `train` and `val` splits:
+
+```yaml
+path: /path/to/datasets
+train: images/train
+val: images/val
+nc: 2
+names: [cell, feather]
 ```
 
-## Installation
+An independent test set is maintained separately from the training and validation data. It is not referenced by the training dataset configurations and is not distributed with this code release.
 
-Python 3.10 or later is recommended.
+## Training configuration
 
-```bash
-git clone https://github.com/Tousengi/OCT-IOI-Detection.git
-cd OCT-IOI-Detection
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
+The training settings below follow `train.py`:
 
-## Dataset preparation
+| Parameter | Value |
+| --- | --- |
+| Model configuration | `train.yaml` |
+| Dataset configurations | `dataset0.yaml` through `dataset9.yaml` |
+| Number of runs | 10 |
+| Epochs | 500 |
+| Image size | 1280 |
+| Batch size | 32 |
+| Patience | 0 |
+| Automatic mixed precision | Disabled |
+| Devices | GPU 0, 1, 2, and 3 |
 
-Organize the dataset in the standard Ultralytics detection format:
-
-```text
-datasets/oct_ioi/
-|-- images/
-|   |-- train/
-|   |-- val/
-|   `-- test/
-`-- labels/
-    |-- train/
-    |-- val/
-    `-- test/
-```
-
-Update `configs/data.yaml` with the local dataset path and the final class names. The dataset is not distributed in this repository. Users are responsible for obtaining the data and following all applicable ethics, privacy, and licensing requirements.
-
-## Training
-
-After replacing the placeholders with the final CPM module and training implementation, training will follow the standard Ultralytics YOLO11 workflow:
-
-```bash
-python train.py \
-  --model yolo11n.pt \
-  --data configs/data.yaml \
-  --epochs 100 \
-  --imgsz 640 \
-  --batch 16
-```
-
-The exact model variant, hyperparameters, random seeds, and source modifications used for the paper will be documented with the final code release.
-
-## Inference
-
-Inference instructions and pretrained weights will be added when the final implementation is released.
+The dataset configuration files and paths used for the experiments are environment-specific. `configs/dataset.yaml` is provided only as a structural template.
 
 ## Citation
 
-If this work is useful in your research, please cite the paper. The BibTeX entry will be added after publication. Citation metadata is also available in `CITATION.cff`.
+If this work is useful in your research, please cite the associated paper. The complete publication record and BibTeX entry will be added when available. Citation metadata is also provided in `CITATION.cff`.
 
 ## License
 
 This project is licensed under the GNU Affero General Public License v3.0. See `LICENSE` and `NOTICE` for details.
 
-The AGPL license is used because the planned release includes modifications derived from the AGPL-licensed Ultralytics YOLO source. If the final release is covered by an Ultralytics Enterprise License or no longer distributes derived source, the licensing arrangement should be reviewed before publication.
+The AGPL license is retained because this release contains modifications and excerpts derived from the AGPL-licensed Ultralytics YOLO source code.
 
 ## Acknowledgements
 
-This project builds on [Ultralytics YOLO](https://github.com/ultralytics/ultralytics). Please also follow its license and citation requirements.
+This work builds on [Ultralytics YOLO](https://github.com/ultralytics/ultralytics). Users must also comply with the applicable Ultralytics license and citation requirements.
