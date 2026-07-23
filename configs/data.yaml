@@ -1,8 +1,5 @@
-# Replace the path and class names with the final dataset configuration.
-path: /path/to/datasets/oct_ioi
+path: /path/to/datasets
 train: images/train
 val: images/val
-test: images/test
-
-names:
-  0: class_0
+nc: 2
+names: ['cell','feather']
