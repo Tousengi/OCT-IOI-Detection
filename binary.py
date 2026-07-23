@@ -13,7 +13,7 @@ sigma = 20
 
 def binarize_image(img_path, save_path=None, threshold=192):
   img=Image.open(img_path).convert('L')
-  bin_img = img.point(lambda x: 255 if x < threhold els 0, 'L')
+  bin_img = img.point(lambda x: 255 if x < threhold else 0, 'L')
 
   if save_path:
     bin_img.save(save_path)
@@ -37,18 +37,18 @@ def curvature_analysis_from_array(arr, sigma=3, threshold=128):
 
   y_smooth = gaussian_filter1d(y_filled, sigma=sigma)
 
-dy = np.gradient(y_smooth)
-d2y = np.gradient(dy)
-
-curvature = np.abs(d2y) / np.power(1 + np.power(dy, 2), 1.5)
-
-ds = np.sqrt(1 + np.power(dy, 2))
-
-total_curvature = np.sum(curvature * ds)
-total_length = np.sum(ds)
-mean_curvature = total_curvature / total_length if total_length > 0 else 0
-
-return mean_curvature
+  dy = np.gradient(y_smooth)
+  d2y = np.gradient(dy)
+  
+  curvature = np.abs(d2y) / np.power(1 + np.power(dy, 2), 1.5)
+  
+  ds = np.sqrt(1 + np.power(dy, 2))
+  
+  total_curvature = np.sum(curvature * ds)
+  total_length = np.sum(ds)
+  mean_curvature = total_curvature / total_length if total_length > 0 else 0
+  
+  return mean_curvature
 
 results1 = []
 
