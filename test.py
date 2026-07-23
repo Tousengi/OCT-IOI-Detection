@@ -2,7 +2,7 @@ from ultralytics import YOLO
 import os
 import numpy as np
 
-image_foler = "testset/images"
+image_folder = "testset/images"
 test_model_path = "test_model_path/best.pt"
 
 model = YOLO(test_model_path)
