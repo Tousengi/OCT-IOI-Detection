@@ -4,7 +4,7 @@ Official code release for the paper:
 
 > **Quantitative Analysis of Vitreous Cells and Vitreoretinal Interface Irregularities in Optical Coherence Tomography for Intraocular Inflammation Detection**
 >
-> Deng Qianyi
+> Deng Qianyi, et al.
 
 This repository provides the principal method components and training protocol used in the study. The implementation is based on modified Ultralytics YOLO11 source code.
 
