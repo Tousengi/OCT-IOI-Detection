@@ -12,12 +12,12 @@ class CPM(nn.Module):
         self.wm = nn.Parameter(torch.tensor(0.5))
         self.wa = nn.Parameter(torch.tensor(0.5))
 
-    def forward(self. x):
+    def forward(self.x):
         fm = self.amp(x)
         fm_w = x * F.softmax(fm, dim=1)
         fm_o = x + fm_w
 
-        fa = self.app(x)
+        fa = self.aap(x)
         fa_w = x * F.softmax(fa, dim=1)
         fa_o = x - fa_w
 
@@ -25,7 +25,7 @@ class CPM(nn.Module):
 
 class PPM(nn.Module):
 
-    def __init__(self, in_channels, out_chaanels):
+    def __init__(self, in_channels, out_channels):
         super().__init__()
 
         c_low, c_ref = in_channels
@@ -47,7 +47,7 @@ class PPM(nn.Module):
         pw = F.softmax(pw, dim=1)
 
         pw_low, pw_ref = pw.split(1, dim=1)
-        po_low = pw_low * self.comv_out_low(p_low_ds)
+        po_low = pw_low * self.conv_out_low(p_low_ds)
         po_ref = pw_ref * po_ref
 
         return po_low + po_ref
