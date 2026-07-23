@@ -4,7 +4,7 @@ Official code release for the paper:
 
 > **Quantitative Analysis of Vitreous Cells and Vitreoretinal Interface Irregularities in Optical Coherence Tomography for Intraocular Inflammation Detection**
 >
-> Deng Qianyi, et al.
+> Deng Qianyi, Kazumasa Kishimoto, Osamu Sugiyama, Yuhei Iga, Masahiro Akada, Junki Hoshino, Hidetaka Matsumoto, Hideo Akiyama, Hiroshi Tamura, Masayuki Hata.
 
 This repository provides the principal method components and training protocol used in the study. The implementation is based on modified Ultralytics YOLO11 source code.
 
@@ -14,13 +14,11 @@ The study uses a non-public OCT dataset. Consequently, this repository is intend
 
 | File | Description |
 | --- | --- |
-| `cpm_module.py` | CPM and PPM module definitions used by the modified network. |
-| `configs/train.yaml` | YOLO11 model configuration with CPM blocks and P2-P4 detection outputs. |
-| `loss.py` | Modified bounding-box loss excerpt using Wise-IoU. |
-| `metrics.py` | Wise-IoU calculation used by the modified loss. |
-| `binary.py` | Image binarization and boundary-curvature analysis code. |
+| `cpm_module.py` | CPM module definitions used by the modified network. |
+| `binary.py` | Image binarization code. |
 | `train.py` | Training procedure and experiment parameters. |
 | `test.py` | Code used with the independent test set. |
+| `configs/train.yaml` | YOLO11 model configuration with CPM blocks and P2-P4 detection outputs. |
 | `configs/dataset.yaml` | Dataset configuration template for the training and validation splits. |
 
 The module files mirror modifications made within the Ultralytics source tree. They may rely on imports, registrations, and surrounding classes from the corresponding Ultralytics modules.
