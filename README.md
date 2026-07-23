@@ -34,7 +34,6 @@ path: /path/to/datasets
 train: images/train
 val: images/val
 nc: 2
-names: [cell, feather]
 ```
 
 An independent test set is maintained separately from the training and validation data. It is not referenced by the training dataset configurations and is not distributed with this code release.
@@ -46,14 +45,12 @@ The training settings below follow `train.py`:
 | Parameter | Value |
 | --- | --- |
 | Model configuration | `train.yaml` |
-| Dataset configurations | `dataset0.yaml` through `dataset9.yaml` |
+| Dataset configurations | `dataset_i.yaml`|
 | Number of runs | 10 |
 | Epochs | 500 |
 | Image size | 1280 |
 | Batch size | 32 |
 | Patience | 0 |
-| Automatic mixed precision | Disabled |
-| Devices | GPU 0, 1, 2, and 3 |
 
 The dataset configuration files and paths used for the experiments are environment-specific. `configs/dataset.yaml` is provided only as a structural template.
 
