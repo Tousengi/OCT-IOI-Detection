@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated paper."
+title: "OCT IOI Detection"
+type: software
+authors:
+  - family-names: Deng
+    given-names: Qianyi
+repository-code: "https://github.com/Tousengi/OCT-IOI-Detection"
+license: AGPL-3.0-only
+preferred-citation:
+  type: article
+  title: "Quantitative Analysis of Vitreous Cells and Vitreoretinal Interface Irregularities in Optical Coherence Tomography for Intraocular Inflammation Detection"
+  authors:
+    - family-names: Deng
+      given-names: Qianyi

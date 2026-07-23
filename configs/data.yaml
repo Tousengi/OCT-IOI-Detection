@@ -1,0 +1,8 @@
+# Replace the path and class names with the final dataset configuration.
+path: /path/to/datasets/oct_ioi
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: class_0

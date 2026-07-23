@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+.env
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+
+# Ultralytics outputs and large artifacts
+runs/
+datasets/
+weights/
+*.pt
+*.pth
+*.onnx
+
+# Sensitive or local files
+*.log
+*.csv
+*.xlsx
+*.zip
