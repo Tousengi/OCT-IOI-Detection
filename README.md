@@ -15,7 +15,6 @@ The study uses a non-public OCT dataset. Consequently, this repository is intend
 | File | Description |
 | --- | --- |
 | `cpm_module.py` | CPM module definitions used by the modified network. |
-| `binary.py` | Image binarization code. |
 | `train.py` | Training procedure and experiment parameters. |
 | `test.py` | Code used with the independent test set. |
 | `configs/train.yaml` | YOLO11 model configuration with CPM blocks and P2-P4 detection outputs. |
