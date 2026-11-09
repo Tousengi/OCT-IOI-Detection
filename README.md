@@ -6,11 +6,6 @@ Code release for:
 >
 > Qianyi Deng, Yuhei Iga, Masahiro Akada, Junki Hoshino, Hidetaka Matsumoto, Hideo Akiyama, Kazumasa Kishimoto, Osamu Sugiyama, Akitaka Tsujikawa, Hiroshi Tamura, Masayuki Hata
 
-The study detects two intraocular inflammation (IOI) related features on OCT
-B-scans — vitreous cells (VC) and vitreoretinal interface irregularities
-(VRII) — counts them per examination, and compares the counts between the
-baseline and the post-injection visit.
-
 This repository contains the model and training code only. The implementation
 modifies the Ultralytics YOLO11 source tree, so the files here are the
 modified components and the configurations used; they are not a standalone
