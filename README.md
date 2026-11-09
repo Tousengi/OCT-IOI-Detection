@@ -28,66 +28,7 @@ case-level tables, are in the Multimedia Appendices of the paper.
 | `test.py`, `binary.py` | Inference on the external cohort and the baseline-versus-post comparison. |
 | `loss.py`, `metrics.py` | Modified Ultralytics components. |
 
-## Corrections relative to the earlier release
-
-Two defects in the first public release were found while preparing the
-revision, and all results reported in the paper were produced after they were
-corrected.
-
-1. **The CPM output did not reach the detection neck.** In the earlier
-   configuration the neck took its skip connections from the layers *before*
-   the CPM (`[[-1, 5]]` and `[[-1, 2]]`), so the purified features flowed only
-   into the following downsampling convolution. The high-resolution detection
-   branch therefore never received them. The connections are now taken after
-   the CPM (`[[-1, 6]]` and `[[-1, 3]]`). The three configurations here all use the
-   corrected wiring.
-2. **`cpm_module.py` could not be imported.** The forward method was written
-   as `def forward(self.x)`. Any attempt to build the model raised a
-   `SyntaxError`.
-
-A third change is a design decision rather than a defect. A channel-wise
-softmax normalises to a sum of one, so each gate is of the order of the
-reciprocal of the channel count; at the 64 and 128 channels used here the
-softmax-gated module changes its input by only about 0.2% to 0.4% in relative
-L2 norm. The proposed model therefore uses sigmoid gating, for which the
-measured change is approximately 20%. Both forms are provided.
-
-## Reproducing the experiments
-
-### Data
-
-The OCT data are not public. Images came from two hospitals and cannot be
-redistributed under the approved protocols. `configs/dataset.yaml` shows the
-expected layout; `nc` is 2, with class 0 = vitreous cells and class 1 =
-vitreoretinal interface irregularities.
-
-Development set: 304 images from 11 patients with IOI (Kyoto University
-Hospital). 129 images contain at least one annotated feature and 175 contain
-none; the latter are kept as negative background examples. 483 features were
-annotated in total (298 VC, 185 VRII).
-
-External cohort: 30 patients (Gunma University Hospital), 20 with IOI and 10
-without. Two orthogonal B-scans, one horizontal and one vertical, were
-acquired per visit, so the same cell is not counted twice.
-
-### Cross-validation
-
-`train.py` runs the 10-fold loop. Each of the 10 patients contributing 30
-images defines one validation fold; the remaining patient (4 images) is in the
-training set of every fold. Each fold therefore has 274 training and 30
-validation images. Cross-validation is used only to characterise detection
-performance and to compare model variants.
-
-### External validation
-
-A single model is trained once on all 11 development patients with the same
-settings and applied once to the external cohort. The checkpoint from the
-final epoch is used, not a checkpoint selected on a validation fold, so no
-selection is made on validation data. Selecting on the validation fold instead
-changes mAP50-95 by 0.10 to 0.13, which is an order of magnitude larger than
-the differences between the models compared in the paper.
-
-### Settings
+## Settings
 
 | Item | Setting |
 | --- | --- |
@@ -110,22 +51,6 @@ the differences between the models compared in the paper.
 Inference uses a confidence threshold of 0.25 and a non-maximum-suppression
 IoU threshold of 0.7 for counting, and a confidence threshold of 0.001 for
 mAP.
-
-### Decision rule
-
-Per patient and per visit the detector produces a vitreous cell score (VCS)
-and a vitreoretinal interface irregularity score (VRIIS), each the number of
-detections. A patient is classified as at risk of IOI when either score is
-higher after injection than at baseline. The rule was fixed before the
-experiments. The sensitivity analysis over nine threshold combinations, the
-per-fold and class-wise results, the patient-level statistics and the
-case-level predictions are reported in Multimedia Appendix 2 of the paper.
-
-## Source files
-
-The source files contain code only. The architecture, the corrections, the
-training and inference settings and the decision rule are documented in this
-README and in the Multimedia Appendices of the paper.
 
 ## Licence
 
