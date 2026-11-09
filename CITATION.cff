@@ -28,6 +28,13 @@ authors:
 repository-code: "https://github.com/Tousengi/OCT-IOI-Detection"
 license: AGPL-3.0-only
 version: "1.0.0"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24083249
+    description: Concept DOI, always resolves to the latest archived version
+  - type: doi
+    value: 10.5281/zenodo.24083250
+    description: DOI of version v1.0.0, the version used for the results in the paper
 preferred-citation:
   type: article
   title: "Quantitative Analysis of Vitreous Cells and Vitreoretinal Interface Irregularities in Optical Coherence Tomography for Brolucizumab-related Intraocular Inflammation Detection in Neovascular Age-related Macular Degeneration"

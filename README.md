@@ -6,6 +6,8 @@ Code release for:
 >
 > Qianyi Deng, Yuhei Iga, Masahiro Akada, Junki Hoshino, Hidetaka Matsumoto, Hideo Akiyama, Kazumasa Kishimoto, Osamu Sugiyama, Akitaka Tsujikawa, Hiroshi Tamura, Masayuki Hata
 
+Archived version used for the results reported in the paper: [doi:10.5281/zenodo.24083250](https://doi.org/10.5281/zenodo.24083250) (all versions: [doi:10.5281/zenodo.24083249](https://doi.org/10.5281/zenodo.24083249))
+
 This repository contains the model and training code only. The implementation
 modifies the Ultralytics YOLO11 source tree, so the files here are the
 modified components and the configurations used; they are not a standalone
