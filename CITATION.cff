@@ -1,0 +1,57 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated paper."
+title: "OCT IOI Detection"
+type: software
+authors:
+  - family-names: Deng
+    given-names: Qianyi
+  - family-names: Iga
+    given-names: Yuhei
+  - family-names: Akada
+    given-names: Masahiro
+  - family-names: Hoshino
+    given-names: Junki
+  - family-names: Matsumoto
+    given-names: Hidetaka
+  - family-names: Akiyama
+    given-names: Hideo
+  - family-names: Kishimoto
+    given-names: Kazumasa
+  - family-names: Sugiyama
+    given-names: Osamu
+  - family-names: Tsujikawa
+    given-names: Akitaka
+  - family-names: Tamura
+    given-names: Hiroshi
+  - family-names: Hata
+    given-names: Masayuki
+repository-code: "https://github.com/Tousengi/OCT-IOI-Detection"
+license: AGPL-3.0-only
+version: "1.0.0"
+preferred-citation:
+  type: article
+  title: "Quantitative Analysis of Vitreous Cells and Vitreoretinal Interface Irregularities in Optical Coherence Tomography for Brolucizumab-related Intraocular Inflammation Detection in Neovascular Age-related Macular Degeneration"
+  journal: "JMIR Bioinformatics and Biotechnology"
+  authors:
+    - family-names: Deng
+      given-names: Qianyi
+    - family-names: Iga
+      given-names: Yuhei
+    - family-names: Akada
+      given-names: Masahiro
+    - family-names: Hoshino
+      given-names: Junki
+    - family-names: Matsumoto
+      given-names: Hidetaka
+    - family-names: Akiyama
+      given-names: Hideo
+    - family-names: Kishimoto
+      given-names: Kazumasa
+    - family-names: Sugiyama
+      given-names: Osamu
+    - family-names: Tsujikawa
+      given-names: Akitaka
+    - family-names: Tamura
+      given-names: Hiroshi
+    - family-names: Hata
+      given-names: Masayuki
